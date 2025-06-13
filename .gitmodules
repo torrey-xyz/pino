@@ -1,0 +1,3 @@
+[submodule "pinocchio"]
+	path = pinocchio
+	url = https://github.com/anza-xyz/pinocchio
