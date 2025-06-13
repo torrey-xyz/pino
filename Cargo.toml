@@ -1,0 +1,77 @@
+[workspace]
+members = [
+    # Core Framework
+    "crates/pino-core",
+    "crates/pino-macros", 
+    "crates/pino-runtime",
+    
+    # Developer Tools
+    "crates/pino-cli",
+    "crates/pino-codegen",
+    "crates/pino-test",
+    
+    # Framework Extensions
+    "crates/pino-std",
+    "crates/pino-memory",
+    "crates/pino-cpi",
+    "crates/pino-anchor-compat",
+    
+    # Integration Helpers
+    "crates/pino-spl",
+    "crates/pino-metaplex",
+    
+    # Examples
+    "examples/hello-world",
+    "examples/token-program",
+    "examples/dex-program",
+    "examples/nft-marketplace",
+]
+
+resolver = "2"
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+license = "MIT OR Apache-2.0"
+authors = ["Pino Contributors"]
+repository = "https://github.com/your-org/pino"
+homepage = "https://pino.dev"
+documentation = "https://docs.pino.dev"
+
+[workspace.dependencies]
+# Solana dependencies
+solana-program = "1.18"
+anchor-lang = "0.29"
+
+# Pinocchio (local submodule)
+pinocchio = { path = "./pinocchio" }
+
+# Core Pino crates (for internal dependencies)
+pino-core = { path = "./crates/pino-core" }
+pino-macros = { path = "./crates/pino-macros" }
+pino-runtime = { path = "./crates/pino-runtime" }
+pino-std = { path = "./crates/pino-std" }
+pino-memory = { path = "./crates/pino-memory" }
+pino-cpi = { path = "./crates/pino-cpi" }
+pino-test = { path = "./crates/pino-test" }
+
+# External dependencies
+proc-macro2 = "1.0"
+quote = "1.0"
+syn = { version = "2.0", features = ["full"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+tokio = { version = "1.0", features = ["full"] }
+clap = { version = "4.0", features = ["derive"] }
+anyhow = "1.0"
+thiserror = "1.0"
+
+[profile.release]
+overflow-checks = true
+lto = "fat"
+codegen-units = 1
+panic = "abort"
+
+[profile.release-with-debug]
+inherits = "release"
+debug = true 

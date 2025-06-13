@@ -1,8 +1,8 @@
-# PinoCLI Framework Design
-## Lightweight Solana Development Framework Built on Pinocchio
+# Pino Framework Design
+## Lightweight Solana Smart Contract Development Framework Built on Pinocchio
 
 ### Overview
-PinoCLI is a lightweight, high-performance framework for Solana program development that builds on the Pinocchio SDK. Unlike Anchor, which prioritizes developer convenience at the cost of CU efficiency, PinoCLI provides a balanced approach: ergonomic APIs with zero-cost abstractions and optimal CU usage.
+Pino is a lightweight, high-performance framework for Solana smart contract development that builds on the Pinocchio SDK. Unlike Anchor, which prioritizes developer convenience at the cost of CU efficiency, Pino provides a balanced approach: ergonomic APIs with zero-cost abstractions and optimal CU usage.
 
 ## Core Design Principles
 
@@ -167,7 +167,7 @@ fn process_batch_transfers(ctx: Context<BatchTransfer>) -> ProgramResult {
 
 ## Framework Components
 
-### 1. **PinoCLI Code Generator**
+### 1. **Pino Code Generator**
 
 ```bash
 # Create new project
@@ -435,7 +435,7 @@ pub struct OrderBook {
 
 ### 1. **CU Consumption Comparison**
 ```
-Operation               | Anchor  | PinoCLI | Improvement
+Operation               | Anchor  | Pino    | Improvement
 ------------------------|---------|---------|------------
 Account deserialization| 2,100   | 150     | 93% less
 Instruction routing     | 800     | 50      | 94% less
@@ -446,7 +446,7 @@ Complex state update    | 12,000  | 4,500   | 62% less
 
 ### 2. **Memory Usage**
 ```
-Feature                 | Anchor  | PinoCLI | Improvement
+Feature                 | Anchor  | Pino    | Improvement
 ------------------------|---------|---------|------------
 Account wrapper overhead| 128B    | 0B      | 100% less
 Instruction data copy   | Full    | Zero    | 100% less
@@ -455,7 +455,7 @@ Stack frame size        | 2KB     | 512B    | 75% less
 
 ### 3. **Binary Size**
 ```
-Program Type           | Anchor  | PinoCLI | Improvement
+Program Type           | Anchor  | Pino    | Improvement
 -----------------------|---------|---------|------------
 Hello World            | 45KB    | 12KB    | 73% smaller
 Token Program          | 89KB    | 34KB    | 62% smaller
