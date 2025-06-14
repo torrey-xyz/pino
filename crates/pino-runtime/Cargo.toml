@@ -1,0 +1,38 @@
+[package]
+name = "pino-runtime"
+version = "0.1.0"
+edition = "2021"
+description = "Runtime components and allocators for the Pino Solana framework"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/torrey-xyz/pino"
+keywords = ["solana", "blockchain", "runtime", "allocator", "memory"]
+categories = ["development-tools", "blockchain"]
+
+[dependencies]
+# Foundation: Pinocchio for zero-copy efficiency
+pinocchio = { path = "../../pinocchio/sdk/pinocchio" }
+
+# Zero-copy and serialization
+bytemuck = { version = "1.20.0", features = ["derive", "min_const_generics"] }
+
+# Memory management and allocation
+bumpalo = "3.14"
+
+# Error handling (no_std compatible)
+thiserror-no-std = "2.0"
+
+# Core pino dependencies
+pino-core = { path = "../pino-core" }
+
+# Development dependencies
+[dev-dependencies]
+solana-program-test = "1.18"
+tokio = { version = "1.0", features = ["macros", "rt-multi-thread"] }
+
+[features]
+default = []
+std = ["pinocchio/std"]
+profiling = []
+test-bpf = []
+
+# Profile configurations are managed at workspace level 
