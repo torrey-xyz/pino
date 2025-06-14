@@ -1,0 +1,32 @@
+[package]
+name = "hello-world"
+version = "0.1.0"
+edition = "2021"
+description = "Hello World example using Pino framework built on Pinocchio"
+
+[lib]
+crate-type = ["cdylib", "lib"]
+
+[dependencies]
+# Pino framework (built on Pinocchio)
+pino = { path = "../../crates/pino-core", package = "pino-core" }
+
+# Serialization
+borsh = { version = "1.0", features = ["derive"] }
+bytemuck = { version = "1.20.0", features = ["derive"] }
+
+[features]
+default = []
+std = ["pino/std"]
+test-bpf = []
+
+# Optimization for on-chain deployment
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+panic = "abort"
+overflow-checks = false
+
+[profile.release.package."*"]
+opt-level = 3 
