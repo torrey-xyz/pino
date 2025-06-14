@@ -1,0 +1,46 @@
+[package]
+name = "pino-core"
+version = "0.1.0"
+edition = "2021"
+description = "Core functionality for the Pino Solana framework - zero-cost abstractions with CU optimization"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/torrey-xyz/pino"
+keywords = ["solana", "blockchain", "framework", "zero-copy", "performance"]
+categories = ["development-tools", "blockchain"]
+
+[dependencies]
+# Foundation: Pinocchio for zero-copy efficiency
+pinocchio = { path = "../../pinocchio/sdk/pinocchio" }
+
+# Zero-copy and serialization
+bytemuck = { version = "1.20.0", features = ["derive", "min_const_generics"] }
+borsh = { version = "1.0", features = ["derive"] }
+
+# Memory management and allocation
+bumpalo = "3.14"
+
+# Error handling (no_std compatible)
+thiserror-no-std = "2.0"
+
+# Stack-allocated collections
+heapless = "0.8"
+
+# Procedural macros
+pino-macros = { path = "../pino-macros" }
+
+# Optional: Solana program for compatibility (only when needed)
+solana-program = { version = "1.18", optional = true }
+
+# Development dependencies
+[dev-dependencies]
+solana-program-test = "1.18"
+tokio = { version = "1.0", features = ["macros", "rt-multi-thread"] }
+
+[features]
+default = []
+std = ["pinocchio/std"]
+solana-compat = ["dep:solana-program"]
+profiling = []
+test-bpf = []
+
+# Profile configurations are managed at workspace level 
