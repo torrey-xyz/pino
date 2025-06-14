@@ -11,6 +11,10 @@ Cargo.lock
 *.swo
 *~
 
+# Cursor AI workspace files
+.cursor/
+promt
+
 # OS files
 .DS_Store
 .DS_Store?

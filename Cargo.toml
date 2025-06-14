@@ -2,29 +2,12 @@
 members = [
     # Core Framework
     "crates/pino-core",
-    "crates/pino-macros", 
+    "crates/pino-macros",
     "crates/pino-runtime",
-    
-    # Developer Tools
     "crates/pino-cli",
-    "crates/pino-codegen",
-    "crates/pino-test",
-    
-    # Framework Extensions
-    "crates/pino-std",
-    "crates/pino-memory",
-    "crates/pino-cpi",
-    "crates/pino-anchor-compat",
-    
-    # Integration Helpers
-    "crates/pino-spl",
-    "crates/pino-metaplex",
     
     # Examples
     "examples/hello-world",
-    "examples/token-program",
-    "examples/dex-program",
-    "examples/nft-marketplace",
 ]
 
 resolver = "2"
@@ -32,6 +15,7 @@ resolver = "2"
 [workspace.package]
 version = "0.1.0"
 edition = "2021"
+rust-version = "1.70"
 license = "MIT OR Apache-2.0"
 authors = ["Pino Contributors"]
 repository = "https://github.com/your-org/pino"
@@ -44,7 +28,7 @@ solana-program = "1.18"
 anchor-lang = "0.29"
 
 # Pinocchio (local submodule)
-pinocchio = { path = "./pinocchio" }
+pinocchio = { path = "./pinocchio/sdk/pinocchio" }
 
 # Core Pino crates (for internal dependencies)
 pino-core = { path = "./crates/pino-core" }
